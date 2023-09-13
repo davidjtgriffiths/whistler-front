@@ -3,7 +3,7 @@
     <!-- Your form goes here -->
     <form @submit.prevent="submitForm">
       <label for="title">Title:</label>
-      <input type="text" id="title" v-model="postTitle" />
+      <input type="text" id="title" v-model="postEmail" />
 
       <label for="content">Content:</label>
       <textarea id="content" v-model="postContent"></textarea>
@@ -23,15 +23,25 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
-const postTitle = ref('');
+const postEmail = ref('');
 const postContent = ref('');
 const response = ref(null);
 
 const submitForm = async () => {
   try {
-    const responseData = await axios.post('https://example.com/api/posts', {
-      title: postTitle.value,
-      content: postContent.value,
+    const responseData = await axios.post('https://127.0.0.1:8000/api/users', {
+      "email": postEmail.value,
+      "roles": [
+        "string",
+        "ROLE_USER"
+    ],
+    "password": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "createdAt": "2023-09-13T09:50:16+01:00",
+    "updatedAt": "2023-09-13T09:50:16+01:00",
+    "userIdentifier": "string",
+    "verified": true
     });
 
     // Handle the response as needed
