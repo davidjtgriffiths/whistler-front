@@ -32,6 +32,7 @@ import Register from "@/views/auth/Register.vue";
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
 import Index from "@/views/Index.vue";
+import Whistler from "@/views/Whistler.vue";
 
 // routes
 
@@ -77,6 +78,10 @@ const routes = [
   {
     path: "/landing",
     component: Landing,
+  },
+  {
+    path: "/whistler",
+    component: Whistler,
   },
   {
     path: "/profile",
