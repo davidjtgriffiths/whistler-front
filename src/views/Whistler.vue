@@ -6,7 +6,7 @@
       <input type="text" id="title" v-model="postEmail" />
 
       <label for="content">Content:</label>
-      <textarea id="content" v-model="postContent"></textarea>
+      <textarea id="content" v-model="postPassword"></textarea>
 
       <button type="submit">Submit</button>
     </form>
@@ -24,23 +24,18 @@ import { ref } from 'vue';
 import axios from 'axios';
 
 const postEmail = ref('');
-const postContent = ref('');
+const postPassword = ref('');
 const response = ref(null);
 
 const submitForm = async () => {
   try {
-    const responseData = await axios.post('https://127.0.0.1:8000/api/users', {
+    const responseData = await axios.post('https://localhost:8000/applogin', {
       "email": postEmail.value,
+      "password":postPassword.value,
       "roles": [
         "string",
         "ROLE_USER"
     ],
-    "password": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "createdAt": "2023-09-13T09:50:16+01:00",
-    "updatedAt": "2023-09-13T09:50:16+01:00",
-    "userIdentifier": "string",
     "verified": true
     });
 
@@ -51,6 +46,30 @@ const submitForm = async () => {
     console.error('Error:', error);
   }
 };
+// const submitForm = async () => {
+//   try {
+//     const responseData = await axios.post('https://localhost:8000/api/users', {
+//       "email": postEmail.value,
+//       "roles": [
+//         "string",
+//         "ROLE_USER"
+//     ],
+//     "password": "string",
+//     "firstName": "string",
+//     "lastName": "string",
+//     "createdAt": "2023-09-13T09:50:16+01:00",
+//     "updatedAt": "2023-09-13T09:50:16+01:00",
+//     "userIdentifier": "string",
+//     "verified": true
+//     });
+
+//     // Handle the response as needed
+//     response.value = responseData.data;
+//   } catch (error) {
+//     // Handle any errors that occurred during the request
+//     console.error('Error:', error);
+//   }
+// };
 
 
   const onSubmit = async () => {
