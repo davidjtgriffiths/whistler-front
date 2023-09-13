@@ -34,10 +34,25 @@
 </template>
 <script setup>
 /* eslint-disable */
+import axios from "axios";
 import CardTable from "@/components/Cards/CardTable.vue";
 
 
   const onSubmit = async () => {
     console.log("kjashdjkahs askjdkla")
+    const responseData = await axios.post('https://127.0.0.1:8000/api/users', {
+    "email": "stringABC",
+    "roles": [
+        "string",
+        "ROLE_USER"
+    ],
+    "password": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "createdAt": "2023-09-13T09:50:16+01:00",
+    "updatedAt": "2023-09-13T09:50:16+01:00",
+    "userIdentifier": "string",
+    "verified": true
+});
   }
 </script>
